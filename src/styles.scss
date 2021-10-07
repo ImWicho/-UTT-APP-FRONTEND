@@ -30,3 +30,18 @@ mat-form-field{ width: 100%; }
   width: 100%;
   height: auto;
 }
+
+table{
+  width: 100%;
+}
+
+.table-responsive{
+  display: block;
+  overflow-x: auto;
+}
+
+@media (max-width: 1024px){
+  table, mat-paginator{
+    min-width: 600px;
+  }
+}
