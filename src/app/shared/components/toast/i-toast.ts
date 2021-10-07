@@ -3,7 +3,7 @@ export interface IToast{
   title: string;
   description?: string;
   type: TOAST_TYPE;
-  isShowed: boolean;
+  // isShowed: boolean;
   timeOut: number;
   useDefaultImage?: boolean;
   resource?:  string | null;

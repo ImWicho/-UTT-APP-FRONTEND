@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { appReducers } from './store/init.reducer';
+import { SharedComponentsModule } from '@components/shared-components.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { appReducers } from './store/init.reducer';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SharedComponentsModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
