@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL : '',
-  NAME_TOKEN: ''
+  API_URL : 'http://localhost:3333',
+  NAME_TOKEN: 't0k3n'
 };
 
 /*
