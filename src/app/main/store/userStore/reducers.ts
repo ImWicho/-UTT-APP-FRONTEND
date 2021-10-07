@@ -1,9 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 import { Action, createReducer, on } from '@ngrx/store';
+import { AppState } from '@redux/init.reducer';
 import { saveUser } from './actions';
 
 export interface State {
     key: string | null;
+}
+
+export interface AppStateWithUser extends AppState{
+    user: State;
 }
 
 export const initialState: State = {
