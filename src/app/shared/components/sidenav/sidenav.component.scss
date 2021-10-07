@@ -1,28 +1,25 @@
-.image {
-    // padding: 10px;
-    margin: 10px 0;
-    // max-width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+@import 'colorss';
 
 .info {
     padding: 10px;
     font-size: 20px;
     white-space: pre-wrap;
-    // max-width: 50%;
+    word-wrap: break-word;
     text-align: left;
 }
 
+img{
+    padding: 5px 0;
+    border-radius: 5px;
+    background-color: $primary;
+}
+
 .account {
-    // font-size: 40px;
     transform: scale(3);
     
 }
 
 .space {
-    // max-width: 90%;
     margin:10px 0;
 }
 

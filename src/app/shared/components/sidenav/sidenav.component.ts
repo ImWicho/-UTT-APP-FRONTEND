@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IUser } from 'app/main/interfaces/i-user';
+import { AppStateWithUser } from 'app/main/store/userStore/reducers';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-
-  constructor() { }
+  user!: IUser | null;
+  sub!: Subscription;
+  constructor(private store: Store<AppStateWithUser>) { }
 
   ngOnInit(): void {
+    this.sub = this.store.select('user').subscribe((data) => this.user = data.user);
   }
 
 }
