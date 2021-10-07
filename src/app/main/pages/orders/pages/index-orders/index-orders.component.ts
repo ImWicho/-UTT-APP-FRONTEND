@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DialogService } from '@services/dialog.service';
+import { ProvidersDialogComponent } from '../../components/providers-dialog/providers-dialog.component';
 import { OrderService } from '../../services/order.service';
 
 @Component({
@@ -15,10 +17,15 @@ export class IndexOrdersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'areaName', 'cost', 'options'];
   dataSource!: MatTableDataSource<any>;
   orders = [];
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService,
+              private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.onGetOrders();
+  }
+
+  onOpenDialogProvider(data: any): void{
+    this.dialogService.onShowDialogData(ProvidersDialogComponent, data, { width: 500 });
   }
 
   onGetOrders(): void{

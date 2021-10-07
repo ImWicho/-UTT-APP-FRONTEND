@@ -1,0 +1,7 @@
+<h2 mat-dialog-title>Proveedores</h2>
+<mat-dialog-content class="mat-typography">
+  <h3 *ngFor="let provider of providers">- {{ provider.name }}</h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-flat-button color="primary" [mat-dialog-close]="true">Cerrar</button>
+</mat-dialog-actions>

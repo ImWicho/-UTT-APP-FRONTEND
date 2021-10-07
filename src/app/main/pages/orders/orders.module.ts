@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { OrdersRoutingModule } from './orders-routing.module';
 import { IndexOrdersComponent } from './pages/index-orders/index-orders.component';
 import { MaterialModule } from '@modules/material.module';
+import { ProvidersDialogComponent } from './components/providers-dialog/providers-dialog.component';
 
 
 @NgModule({
   declarations: [
-    IndexOrdersComponent
+    IndexOrdersComponent,
+    ProvidersDialogComponent
   ],
   imports: [
     CommonModule,

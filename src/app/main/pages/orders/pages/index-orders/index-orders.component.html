@@ -39,7 +39,7 @@
                 <mat-icon svgIcon="dots-vertical"></mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item>
+                <button mat-menu-item (click)="onOpenDialogProvider(row.providers)">
                   <mat-icon svgIcon="eye"></mat-icon>
                   <span>Ver proveedores</span>
                 </button>
