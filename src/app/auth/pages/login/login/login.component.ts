@@ -21,17 +21,6 @@ export class LoginComponent implements OnInit {
               private toastService: ToastService) { this.onBuildForm(); }
 
   ngOnInit(): void {
-    setInterval(() => {
-      console.log('NICE');
-      this.toastService.addToast({
-        title: 'Bienvenido',
-        timeOut: 3000,
-        type: TOAST_TYPE.SUCCESS,
-        description: 'Has iniciado sesión correctamente.',
-        useDefaultImage: false,
-        resource: 'assets/img/logo.png'
-      });
-    }, 2000);
   }
 
   onBuildForm(): void{
@@ -46,6 +35,14 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.authService.onLogin(this.form.value)
       .subscribe(() => {
+        this.toastService.addToast({
+          title: 'Bienvenido',
+          timeOut: 3000,
+          type: TOAST_TYPE.SUCCESS,
+          description: 'Has iniciado sesión correctamente.',
+          useDefaultImage: false,
+          resource: 'assets/img/pet.png'
+        });
         this.router.navigate(['/main']);
       });
   }

@@ -11,6 +11,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { DataService } from './data.service';
 import { Router } from '@angular/router';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -18,6 +19,12 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private dataSvc: DataService, private router: Router) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const token: string | null = this.dataSvc.onGetCookieStorage(environment.NAME_TOKEN);
+
+    if(token){
+      request = this.cloneRequest(request, token);
+    }
+
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => throwError(this.handleError(error)))
     );

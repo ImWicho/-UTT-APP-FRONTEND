@@ -20,4 +20,12 @@ export class AuthService {
       })
     );
   }
+
+  onLogOut(): Observable<any>{
+    return this.http.delete<any>(`${environment.API_URL}/logout`).pipe(
+      tap(() => {
+        this.dataService.onRemoveAllCookies();
+      })
+    );
+  }
 }
