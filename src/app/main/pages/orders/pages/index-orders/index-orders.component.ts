@@ -8,7 +8,6 @@ import { isLoading, stopLoading } from '@redux/app.actions';
 import { AppState } from '@redux/init.reducer';
 import { DialogService } from '@services/dialog.service';
 import { NotificationService } from '@services/notification.service';
-import { ToastService } from '@services/toast.service';
 import { ProvidersDialogComponent } from '../../components/providers-dialog/providers-dialog.component';
 import { OrderService } from '../../services/order.service';
 

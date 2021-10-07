@@ -1,9 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TOAST_TYPE } from '@components/toast/i-toast';
 import { EMAIL } from '@constants/regex';
-import { ToastService } from '@services/toast.service';
+import { NotificationService } from '@services/notification.service';
 import { AuthService } from 'app/auth/services/auth.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
-              private toastService: ToastService) { this.onBuildForm(); }
+              private notificationService: NotificationService) { this.onBuildForm(); }
 
   ngOnInit(): void {
   }
@@ -35,15 +36,18 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.authService.onLogin(this.form.value)
       .subscribe(() => {
-        this.toastService.addToast({
+        this.notificationService.onShowNotification({
           title: 'Bienvenido',
-          timeOut: 3000,
-          type: TOAST_TYPE.SUCCESS,
-          description: 'Has iniciado sesión correctamente.',
-          useDefaultImage: false,
-          resource: 'assets/img/pet.png'
+          desc: 'Has iniciado sesión correctamente.',
+          type: TOAST_TYPE.SUCCESS
         });
         this.router.navigate(['/main']);
+      }, (error: HttpErrorResponse) => {
+        this.notificationService.onShowNotification({
+          title: 'Credenciales Incorrectas',
+          desc: 'Verifica correo y contraseña.',
+          type: TOAST_TYPE.DANGER
+        });
       });
   }
 
