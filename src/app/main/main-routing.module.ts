@@ -6,7 +6,8 @@ const routes: Routes = [
   {
     path: '', component: MainComponent,
     children: [
-    { path: 'orders', loadChildren:() => import('./pages/orders/orders.module').then((m) => m.OrdersModule) }
+      { path: 'orders', loadChildren:() => import('./pages/orders/orders.module').then((m) => m.OrdersModule) },
+      { path: 'quizes', loadChildren:() => import('./pages/quizes/quizes.module').then((m) => m.QuizesModule) }
     ]
   }
 ];
