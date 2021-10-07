@@ -6,8 +6,8 @@
 
 // LIGHT THEME
 
-$template-primary-light: mat.define-palette(mat.$blue-grey-palette);
-$template-accent-light: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$template-primary-light: mat.define-palette($md-primary);
+$template-accent-light: mat.define-palette($md-secondary, A200, A100, A400);
 $template-warn-light: mat.define-palette(mat.$deep-orange-palette);
 
 $template-typography: mat.define-typography-config(

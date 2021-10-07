@@ -1,14 +1,16 @@
-.card-login {
-    max-width: 500px;
-}
-
-.tamano {
+.wrap-login-container{
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    align-items: center;
 }
 
-.header{
-    text-align: center !important;
-    padding: 20px;
+.login-card{
+    max-width: 600px;
+    min-width: 400px;
+
+    img{
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
 }
