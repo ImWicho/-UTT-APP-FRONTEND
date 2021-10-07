@@ -12,6 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { appReducers } from './store/init.reducer';
 import { SharedComponentsModule } from '@components/shared-components.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SharedComponentsModule } from '@components/shared-components.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     SharedComponentsModule,
     StoreModule.forRoot(appReducers),

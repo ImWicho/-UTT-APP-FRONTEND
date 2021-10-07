@@ -18,7 +18,7 @@ import { QuizService } from '../../services/quiz.service';
 export class IndexQuizesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['id', 'created_at', 'totalProviders', 'options'];
+  displayedColumns: string[] = ['id', 'created_at', 'totalProviders', 'totalMissing', 'options'];
   dataSource!: MatTableDataSource<any>;
   quizes = [];
   sub!: Subscription;
@@ -66,7 +66,8 @@ export class IndexQuizesComponent implements OnInit {
   filterData(data: any): void{
     this.quizes = data.map((x: any) => ({
         ...x,
-        totalProviders : x.providers.length
+        totalProviders : x.providers.filter((p: any) => p.status_id === '1').length,
+        totalMissing : x.providers.filter((p: any) => p.status_id !== '1').length,
       }));
     this.setData();
   }

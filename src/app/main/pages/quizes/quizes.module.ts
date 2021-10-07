@@ -5,6 +5,7 @@ import { QuizesRoutingModule } from './quizes-routing.module';
 import { MaterialModule } from '@modules/material.module';
 import { IndexQuizesComponent } from './pages/index-quizes/index-quizes.component';
 import { AnswerQuizDialogComponent } from './components/answer-quiz-dialog/answer-quiz-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { AnswerQuizDialogComponent } from './components/answer-quiz-dialog/answe
   imports: [
     CommonModule,
     QuizesRoutingModule,
-    MaterialModule
+    ReactiveFormsModule,
+    MaterialModule,
   ]
 })
 export class QuizesModule { }
