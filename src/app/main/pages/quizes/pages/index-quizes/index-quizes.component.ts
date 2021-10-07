@@ -7,6 +7,7 @@ import { DialogService } from '@services/dialog.service';
 import { ProvidersDialogComponent } from 'app/main/pages/orders/components/providers-dialog/providers-dialog.component';
 import { AppStateWithUser } from 'app/main/store/userStore/reducers';
 import { Subscription } from 'rxjs';
+import { AnswerQuizDialogComponent } from '../../components/answer-quiz-dialog/answer-quiz-dialog.component';
 import { QuizService } from '../../services/quiz.service';
 
 @Component({
@@ -33,6 +34,16 @@ export class IndexQuizesComponent implements OnInit {
         this.getQuizesByArea();
       }
     });
+  }
+
+  async onOpenAnswerQuiz(data: any): Promise<void>{
+    if(await this.dialogService.onShowDialogData(
+      AnswerQuizDialogComponent,
+      data, { width: 900 }).toPromise()
+      ){
+      console.log(true);
+
+    }
   }
 
   onOpenDialogProvider(data: any): void{
