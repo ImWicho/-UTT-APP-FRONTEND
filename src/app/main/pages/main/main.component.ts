@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SidenavService } from '@services/sidenav.service';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Store } from '@ngrx/store';
-import { AppState } from '@redux/main.reducer';
+import { AppState } from '@redux/init.reducer';
 
 @Component({
   selector: 'app-main',
@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
               private store: Store<AppState>){}
 
   ngOnInit(): void{
-    this.store.select('app').subscribe((data) => this.isSmall = data.isResponsive);
+    this.store.select('ui').subscribe((data) => this.isSmall = data.isResponsive);
     this.sidenavService.toggle$.subscribe(() => this.drawer.toggle());
   }
 

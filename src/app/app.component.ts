@@ -2,8 +2,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IconService } from './shared/services/icon.service';
-import { isResponsive } from '@redux/actions/app/app.actions';
-import { AppState } from '@redux/main.reducer';
+import { isResponsive } from '@redux/app.actions';
+import { AppState } from '@redux/init.reducer';
 
 @Component({
   selector: 'app-root',

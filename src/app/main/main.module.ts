@@ -6,6 +6,8 @@ import { MaterialModule } from '@modules/material.module';
 
 import { MainComponent } from './pages/main/main.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { StoreModule } from '@ngrx/store';
+import { userReducerReducer } from './store/reducers';
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import { OrdersComponent } from './pages/orders/orders.component';
     CommonModule,
     MainRoutingModule,
     MaterialModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    StoreModule.forFeature('user', userReducerReducer)
   ]
 })
 export class MainModule { }

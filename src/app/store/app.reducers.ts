@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { Action, createReducer, on } from '@ngrx/store';
-import { isResponsive, isLoading, stopLoading } from '@redux/actions/app/app.actions';
+import { isResponsive, isLoading, stopLoading } from '@redux/app.actions';
 
 
 export interface State {
