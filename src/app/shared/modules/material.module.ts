@@ -16,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatChipsModule} from '@angular/material/chips';
 
 const material = [
   MatSidenavModule,
@@ -34,7 +35,8 @@ const material = [
   MatDialogModule,
   MatSelectModule,
   MatCheckboxModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatChipsModule
 ];
 @NgModule({
   exports: [...material]

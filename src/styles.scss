@@ -45,3 +45,7 @@ table{
     min-width: 600px;
   }
 }
+
+::ng-deep .mat-dialog-content{
+  padding: 10px 24px !important;
+}
