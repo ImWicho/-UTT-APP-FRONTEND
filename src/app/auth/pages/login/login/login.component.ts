@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         });
         this.router.navigate(['/main']);
       }, (error: HttpErrorResponse) => {
+        this.isLoading = false;
         this.notificationService.onShowNotification({
           title: 'Credenciales Incorrectas',
           desc: 'Verifica correo y contraseña.',
