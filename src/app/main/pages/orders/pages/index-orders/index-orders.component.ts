@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -72,6 +73,12 @@ export class IndexOrdersComponent implements OnInit {
   onGetOrders(): void{
     this.orderService.onGetOrdersWithOutQuiz().subscribe((data) => {
       this.filterData(data);
+    }, (error: HttpErrorResponse) => {
+      this.notificationService.onShowNotification({
+        title: 'Ocurrió un error',
+        desc: 'Intente más tarde o contacte a soporte.',
+        type: TOAST_TYPE.DANGER
+      });
     });
   }
 

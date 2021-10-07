@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@redux/init.reducer';
 import { UserService } from 'app/main/services/user.service';
 import { saveUser } from 'app/main/store/userStore/actions';
+import { isLoading, stopLoading } from '@redux/app.actions';
 
 @Component({
   selector: 'app-main',
@@ -22,9 +23,10 @@ export class MainComponent implements OnInit {
   ngOnInit(): void{
     this.store.select('ui').subscribe((data) => this.isSmall = data.isResponsive);
     this.sidenavService.toggle$.subscribe(() => this.drawer.toggle());
-
+    this.store.dispatch( isLoading());
     this.userService.onGetUser().subscribe((data) => {
       this.store.dispatch( saveUser({ user: data }) );
+      this.store.dispatch( stopLoading());
     });
   }
 
