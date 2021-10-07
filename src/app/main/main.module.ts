@@ -5,10 +5,11 @@ import { SharedComponentsModule } from '@components/shared-components.module';
 import { MaterialModule } from '@modules/material.module';
 
 import { MainComponent } from './pages/main/main.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [MainComponent, OrdersComponent],
   imports: [
     CommonModule,
     MainRoutingModule,

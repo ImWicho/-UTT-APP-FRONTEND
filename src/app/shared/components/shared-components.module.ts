@@ -9,6 +9,7 @@ import { ListFilesComponent } from '@components/files/list-files/list-files.comp
 import { LoadFilesComponent } from '@components/files/load-files/load-files.component';
 import { GetFilesComponent } from '@components/files/get-files/get-files.component';
 import { ToastComponent } from './toast/toast.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -25,6 +26,7 @@ import { ToastComponent } from './toast/toast.component';
   imports: [
     CommonModule,
     MaterialModule,
+    RouterModule
   ],
   exports: [
     ToolbarComponent,

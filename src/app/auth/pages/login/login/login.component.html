@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="tamano">
+    <div class="row center-xs middle-xs">
+        <mat-card class="col-xs-12">
+            <mat-card-header class="header center-xs">
+                <mat-card-title>Bienvenidos</mat-card-title>
+            </mat-card-header>
+            <mat-card-content style="padding: 20px;">
+                <mat-form-field appearance="outline" style="margin: auto 10px;">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="margin: auto 10px;">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button>Iniciar Sesión</button>
+              </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+
