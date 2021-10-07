@@ -43,7 +43,7 @@
                   <mat-icon svgIcon="eye"></mat-icon>
                   <span>Ver proveedores</span>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item (click)="onOpenConfirm(row)">
                   <mat-icon svgIcon="check"></mat-icon>
                   <span>Aprobar orden</span>
                 </button>

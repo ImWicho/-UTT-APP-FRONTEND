@@ -10,6 +10,7 @@ import { LoadFilesComponent } from '@components/files/load-files/load-files.comp
 import { GetFilesComponent } from '@components/files/get-files/get-files.component';
 import { ToastComponent } from './toast/toast.component';
 import { RouterModule } from '@angular/router';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     ListFilesComponent,
     LoadFilesComponent,
     GetFilesComponent,
-    ToastComponent
+    ToastComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,

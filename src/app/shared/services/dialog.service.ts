@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '@components/confirm-dialog/confirm-dialog.component';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,6 +21,18 @@ export class DialogService {
     return this.dialog.open(component, {
       width: conf?.width ? `${conf.width}px` : '600px',
       height: conf?.height ? `${conf.height}px` : 'auto',
+      data
+    }).afterClosed();
+  }
+
+  onShowConfirmation(
+    data: {
+      title: string;
+      desc: string;
+      icon: 'check-circle-outline' | 'close-circle-outline' | 'alert-circle-outline';
+    }): Observable<any>{
+    return this.dialog.open(ConfirmDialogComponent,{
+      width: '500px',
       data
     }).afterClosed();
   }

@@ -12,8 +12,6 @@ export class ProvidersDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.providers = this.data;
-    console.log(this.providers);
-
   }
 
 }

@@ -11,6 +11,7 @@ import { AppState } from '@redux/init.reducer';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  isLoading = false;
   constructor(private iconSvc: IconService,
               private breakpointObserver: BreakpointObserver,
               private store: Store<AppState>){}
@@ -22,5 +23,7 @@ export class AppComponent implements OnInit {
     ]).subscribe((data: any) => {
       this.store.dispatch( isResponsive({ flag: data.matches }));
     });
+
+    this.store.select('ui').subscribe((ui) => this.isLoading = ui.isLoading);
   }
 }
