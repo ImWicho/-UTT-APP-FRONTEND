@@ -14,7 +14,7 @@ export class ProviderService {
     return this.http.get<any>(`${environment.API_URL}/api/v1/providers`);
   }
 
-  onRestoreProvider(resultId: number): Observable<any>{
+  onRestoreProvider(resultId: number | string): Observable<any>{
     return this.http.post<any>(`${environment.API_URL}/api/v1/results/restoreProvider`, { resultId });
   }
 }

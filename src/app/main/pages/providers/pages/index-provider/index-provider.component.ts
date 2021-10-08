@@ -2,7 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TOAST_TYPE } from '@components/toast/i-toast';
+import { Store } from '@ngrx/store';
+import { isLoading, stopLoading } from '@redux/app.actions';
+import { AppState } from '@redux/init.reducer';
 import { DialogService } from '@services/dialog.service';
+import { NotificationService } from '@services/notification.service';
 import { ProviderService } from '../../services/provider.service';
 
 @Component({
@@ -17,7 +22,9 @@ export class IndexProviderComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   providers = [];
   constructor(private providerService: ProviderService,
-              private dialogService: DialogService) { }
+              private dialogService: DialogService,
+              private store: Store<AppState>,
+              private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.onGetProviders();
@@ -30,9 +37,29 @@ export class IndexProviderComponent implements OnInit {
         desc: 'El proveedor volverá a un estatus "No calificado"',
         icon : 'alert-circle-outline'
       }).toPromise()){
-        console.log(true);
+        this.onReevaluateProvider(data.results[0].id);
 
       }
+  }
+
+  async onReevaluateProvider(resultId: number | string): Promise<void>{
+    try{
+      this.store.dispatch( isLoading() );
+      await this.providerService.onRestoreProvider(resultId).toPromise();
+      this.store.dispatch( stopLoading() );
+      this.notificationService.onShowNotification({
+        title: 'Proveedor restaurado',
+        desc: 'El proveedor puede ser evaluado nuevamente.',
+        type: TOAST_TYPE.SUCCESS
+      });
+      this.onGetProviders();
+    }catch(error){
+      this.notificationService.onShowNotification({
+        title: 'Ocurrió un error',
+        desc: 'Intente más tarde o contacte a soporte.',
+        type: TOAST_TYPE.DANGER
+      });
+    }
   }
 
   onGetProviders(): void{

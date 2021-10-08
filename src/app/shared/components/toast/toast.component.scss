@@ -1,5 +1,5 @@
 @import 'colorss';
-$colors : 'danger' #d63939, 'success' $secondary, 'warning' #ffae00;
+$colors : 'danger' $danger, 'success' $secondary, 'warning' $warning;
 // $positions : 'left' 'bottom', 'left' 'top', 'right' 'bottom', 'right' 'top';
 
 @keyframes rightleft{
