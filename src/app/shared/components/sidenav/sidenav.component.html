@@ -1,7 +1,7 @@
 <div>
   <div class="row center-xs" style="margin: 64px 0">
     <div class="col" style="width: 90%">
-      <div class="row middle-xs">
+      <div class="row middle-xs center-xs">
         <div class="col-xs-5">
           <img
             src="assets/img/pet.png"
@@ -10,7 +10,10 @@
             srcset=""
           />
         </div>
-        <div class="col-xs-7 info">{{ user?.email }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 info">{{ user?.email }}</div>
+        <div class="col-xs-12 middle-xs">{{ user?.area?.name }}</div>
       </div>
     </div>
   </div>

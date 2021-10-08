@@ -6,6 +6,7 @@ import { AppState } from '@redux/init.reducer';
 import { UserService } from 'app/main/services/user.service';
 import { saveUser } from 'app/main/store/userStore/actions';
 import { isLoading, stopLoading } from '@redux/app.actions';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
@@ -26,6 +27,8 @@ export class MainComponent implements OnInit {
     this.store.dispatch( isLoading());
     this.userService.onGetUser().subscribe((data) => {
       this.store.dispatch( saveUser({ user: data }) );
+      this.store.dispatch( stopLoading());
+    }, (error: HttpErrorResponse) => {
       this.store.dispatch( stopLoading());
     });
   }
