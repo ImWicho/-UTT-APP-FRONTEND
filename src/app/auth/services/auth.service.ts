@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '@redux/init.reducer';
+import { removeUser } from 'app/main/store/userStore/actions';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -11,7 +14,9 @@ import { DataService } from './data.service';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private dataService: DataService) { }
+  constructor(private http: HttpClient,
+              private dataService: DataService,
+              private store: Store<AppState>) { }
 
   onLogin(data: any): Observable<IToken>{
     return this.http.post<IToken>(`${environment.API_URL}/login`, data).pipe(
@@ -25,6 +30,7 @@ export class AuthService {
     return this.http.delete<any>(`${environment.API_URL}/logout`).pipe(
       tap(() => {
         this.dataService.onRemoveAllCookies();
+        this.store.dispatch( removeUser() );
       })
     );
   }
