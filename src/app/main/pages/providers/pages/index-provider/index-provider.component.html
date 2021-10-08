@@ -22,14 +22,14 @@
             <td mat-cell *matCellDef="let row"> {{row.id}} </td>
           </ng-container>
       
-          <ng-container matColumnDef="areaName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> AREA </th>
-            <td mat-cell *matCellDef="let row"> {{row.areaName}} </td>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
+            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="cost">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> TOTAL </th>
-            <td mat-cell *matCellDef="let row"> {{row.cost | currency}} </td>
+          <ng-container matColumnDef="statusName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTATUS </th>
+            <td mat-cell *matCellDef="let row"> {{row.statusName}} </td>
           </ng-container>
 
           <ng-container matColumnDef="options">
@@ -39,14 +39,10 @@
                 <mat-icon svgIcon="dots-vertical"></mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <!-- <button mat-menu-item (click)="onOpenDialogProvider(row.providers)">
-                  <mat-icon svgIcon="eye"></mat-icon>
-                  <span>Ver proveedores</span>
+                <button mat-menu-item (click)="onRestoreProvider(row)" [disabled]="row.status.id === '1' || row.status.id === '2'">
+                  <mat-icon svgIcon="file-refresh"></mat-icon>
+                  <span>Solicitar reevaluación</span>
                 </button>
-                <button mat-menu-item (click)="onOpenConfirm(row)">
-                  <mat-icon svgIcon="check"></mat-icon>
-                  <span>Aprobar orden</span>
-                </button> -->
               </mat-menu>
             </td>
           </ng-container>
