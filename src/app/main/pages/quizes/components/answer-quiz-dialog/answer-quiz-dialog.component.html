@@ -2,7 +2,9 @@
 <mat-dialog-content class="mat-typography">
   <mat-stepper #stepper linear>
     <mat-step [stepControl]="resultId">
-      <ng-template matStepLabel>Selecciona al proveedor a evaluar 1/2</ng-template>
+      <ng-template matStepLabel
+        >Selecciona al proveedor a evaluar 1/2</ng-template
+      >
       <div class="row">
         <mat-radio-group [formControl]="resultId">
           <mat-radio-button
@@ -14,7 +16,7 @@
         </mat-radio-group>
       </div>
     </mat-step>
-    <mat-step>
+    <mat-step [stepControl]="form">
       <ng-template matStepLabel>Contesta las preguntas 2/2</ng-template>
       <div [formGroup]="form">
         <p>¿El proveedor cumple con la calidad?</p>
@@ -67,7 +69,13 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-flat-button [mat-dialog-close]="false">Cancelar</button>
-  <button mat-flat-button color="primary" [mat-dialog-close]="true">
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="onEvaluate()"
+    [class.spinner]="isLoading"
+    [disabled]="resultId.invalid || form.invalid || isLoading"
+  >
     Aceptar
   </button>
 </mat-dialog-actions>

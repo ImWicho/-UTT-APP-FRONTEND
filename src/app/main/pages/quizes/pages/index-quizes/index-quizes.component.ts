@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,7 +15,7 @@ import { QuizService } from '../../services/quiz.service';
   templateUrl: './index-quizes.component.html',
   styleUrls: ['./index-quizes.component.scss']
 })
-export class IndexQuizesComponent implements OnInit {
+export class IndexQuizesComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   displayedColumns: string[] = ['id', 'created_at', 'totalProviders', 'totalMissing', 'options'];
@@ -27,6 +27,10 @@ export class IndexQuizesComponent implements OnInit {
               private dialogService: DialogService) { }
 
   ngOnInit(): void {
+    this.getQuizes();
+  }
+
+  getQuizes(): void{
     this.sub = this.store.select('user').subscribe((data) => {
       if(data.user?.id === '1'){
         this.getQuizesAdmin();
@@ -36,12 +40,17 @@ export class IndexQuizesComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void{
+    this.sub.unsubscribe();
+  }
+
   async onOpenAnswerQuiz(data: any): Promise<void>{
     if(await this.dialogService.onShowDialogData(
       AnswerQuizDialogComponent,
       data, { width: 900 }).toPromise()
       ){
-      console.log(true);
+        this.getQuizes();
+
 
     }
   }

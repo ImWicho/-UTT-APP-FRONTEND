@@ -14,6 +14,7 @@ export class DialogService {
     return this.dialog.open(component, {
       width: conf?.width ? `${conf.width}px` : '600px',
       height: conf?.height ? `${conf.height}px` : 'auto',
+      disableClose : true,
     }).afterClosed();
   }
 
@@ -21,6 +22,7 @@ export class DialogService {
     return this.dialog.open(component, {
       width: conf?.width ? `${conf.width}px` : '600px',
       height: conf?.height ? `${conf.height}px` : 'auto',
+      disableClose : true,
       data
     }).afterClosed();
   }
@@ -33,6 +35,7 @@ export class DialogService {
     }): Observable<any>{
     return this.dialog.open(ConfirmDialogComponent,{
       width: '500px',
+      disableClose : true,
       data
     }).afterClosed();
   }

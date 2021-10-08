@@ -22,4 +22,8 @@ export class QuizService {
   onGetScores(): Observable<IScore[]>{
     return this.http.get<IScore[]>(`${environment.API_URL}/api/v1/scores`);
   }
+
+  onSaveResults(data: any): Observable<any>{
+    return this.http.post<any>(`${environment.API_URL}/api/v1/results`, data);
+  }
 }
