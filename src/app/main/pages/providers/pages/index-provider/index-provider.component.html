@@ -44,7 +44,9 @@
                 <mat-icon svgIcon="dots-vertical"></mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="onRestoreProvider(row)" [disabled]="row.status.id === '1' || row.status.id === '2'">
+                <button mat-menu-item
+                  (click)="onRestoreProvider(row)"
+                  [disabled]="row.status.id === '1' || row.status.id === '2' || user?.area?.id === '2'">
                   <mat-icon svgIcon="file-refresh"></mat-icon>
                   <span>Solicitar reevaluación</span>
                 </button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,6 +8,9 @@ import { isLoading, stopLoading } from '@redux/app.actions';
 import { AppState } from '@redux/init.reducer';
 import { DialogService } from '@services/dialog.service';
 import { NotificationService } from '@services/notification.service';
+import { IUser } from 'app/main/interfaces/i-user';
+import { AppStateWithUser } from 'app/main/store/userStore/reducers';
+import { Subscription } from 'rxjs';
 import { ProviderService } from '../../services/provider.service';
 
 @Component({
@@ -15,19 +18,27 @@ import { ProviderService } from '../../services/provider.service';
   templateUrl: './index-provider.component.html',
   styleUrls: ['./index-provider.component.scss']
 })
-export class IndexProviderComponent implements OnInit {
+export class IndexProviderComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   displayedColumns: string[] = ['id', 'name', 'statusName', 'options'];
   dataSource!: MatTableDataSource<any>;
   providers = [];
+  user!: IUser | null;
+  subs!: Subscription;
   constructor(private providerService: ProviderService,
               private dialogService: DialogService,
-              private store: Store<AppState>,
+              private store: Store<AppStateWithUser>,
               private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.onGetProviders();
+
+    this.subs = this.store.select('user').subscribe((data) => this.user = data.user);
+  }
+
+  ngOnDestroy(): void{
+    this.subs.unsubscribe();
   }
 
   async onRestoreProvider(data: any): Promise<void>{
