@@ -39,6 +39,12 @@ export class DataService {
     return this.cookieSvc.check(name);
   }
 
+  isAllowed(path: string | undefined): boolean{
+    // if(path === '/'){ return true; }
+    const views = JSON.parse(this.onGetCookieStorage('views') || '[]');
+    return views.includes(`/main/${path}`);
+  }
+
   private onSetCookie(name: string, content: any): void{
     localStorage.setItem(name,content);
     if (environment.production){
