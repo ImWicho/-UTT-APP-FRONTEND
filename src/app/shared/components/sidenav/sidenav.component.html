@@ -17,13 +17,13 @@
       </div>
     </div>
   </div>
-  <div class="row space">
-    <button mat-flat-button color="primary" class="col-xs-12 icon-nav" routerLink="/main/providers">
-      <mat-icon svgIcon="order-bool-ascending-variant"></mat-icon>
-      Proveedores
+  <div class="row space" *ngFor="let view of user?.area?.views">
+    <button mat-flat-button color="primary" class="col-xs-12 icon-nav" [routerLink]="view.path">
+      <mat-icon [svgIcon]="view.icon"></mat-icon>
+      {{ view.name }}
     </button>
   </div>
-  <div class="row space">
+  <!-- <div class="row space">
     <button mat-flat-button color="primary" class="col-xs-12 icon-nav" routerLink="/main/orders">
       <mat-icon svgIcon="order-bool-ascending-variant"></mat-icon>
       Ordenes
@@ -40,5 +40,5 @@
       <mat-icon svgIcon="order-bool-ascending-variant"></mat-icon>
       Resultados
     </button>
-  </div>
+  </div> -->
 </div>

@@ -14,6 +14,16 @@ export interface IUser {
 export interface IArea {
   id:         string;
   name:       string;
+  views:      IView[];
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface IView{
+  id:         string;
+  name:       string;
+  path:       string;
+  icon:       string;
   created_at: Date;
   updated_at: Date;
 }

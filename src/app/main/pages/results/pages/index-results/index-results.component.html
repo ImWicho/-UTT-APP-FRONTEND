@@ -21,14 +21,14 @@
             <td mat-cell *matCellDef="let row">{{ row.quizId }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="is_answered">
+          <ng-container matColumnDef="isAnswered">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>ESTATUS</th>
             <td mat-cell *matCellDef="let row">
               <mat-icon [matTooltip]="
-                  row.is_answered
+                  row.isAnswered
                     ? 'Encuesta respondida'
                     : 'Encuesta no respondida'
-                " [svgIcon]="row.is_answered ? 'check' : 'close'"></mat-icon>
+                " [svgIcon]="row.isAnswered ? 'check' : 'close'"></mat-icon>
             </td>
           </ng-container>
 
@@ -49,14 +49,11 @@
                 <mat-icon svgIcon="dots-vertical"></mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <!-- <button mat-menu-item (click)="onOpenDialogProvider(row.providers)">
-                  <mat-icon svgIcon="eye"></mat-icon>
-                  <span>Ver proveedores</span>
+                <button mat-menu-item (click)="onRestoreProvider(row)" [disabled]="row.provider.status.id === '1' || row.provider.status.id === '2'">
+                  <mat-icon svgIcon="file-refresh"></mat-icon>
+                  <span>Solicitar reevaluación</span>
                 </button>
-                <button mat-menu-item (click)="onOpenConfirm(row)">
-                  <mat-icon svgIcon="check"></mat-icon>
-                  <span>Aprobar orden</span>
-                </button> -->
+
               </mat-menu>
             </td>
           </ng-container>
